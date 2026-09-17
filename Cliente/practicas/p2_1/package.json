@@ -1,0 +1,16 @@
+{
+  "name": "p2_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "p2_1_e1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
