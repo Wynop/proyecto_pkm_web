@@ -21,5 +21,5 @@ for (let i = 0; i < 3; i++) {
     
 }
 
-console.log(entra(contenedor, contenido) ? "entra" : "no entra");
+console.log(entra(contenedor, contenido) );
 
