@@ -16,10 +16,8 @@ for (let i = 0; i < 10; i++) {
     }
 }
 
-for(let i = input.length; i >= 0; i--){
+for(let i = input.length - 1; i >= 0; i--){
     if (quitar[i]) {input.splice(i,1)}
 }
 
 console.log(input);
-
-//3/7 pero creo que va bien me salto desquitar el array con datos

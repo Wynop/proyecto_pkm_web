@@ -4,7 +4,7 @@ const input = [];
 const conteo = [[], []];
 let output = "";
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; input.length < 10; i++) {
   input[i] = prompt("Introduce un elemento: ");
 }
 
@@ -24,8 +24,7 @@ do {
 const maxTimes = Math.max(...conteo[1]);
 const posMax = conteo[1].indexOf(maxTimes);
 
-output = conteo[0][posMax]
+output = conteo[0][posMax];
 
-console.log(conteo[1].indexOf(posMax,posMax) !== -1 ? "error" : output);
+console.log(conteo[1].indexOf(maxTimes, posMax + 1 ) !== -1 ? "error" : output);
 
-//4/8 pero creo que va bien
