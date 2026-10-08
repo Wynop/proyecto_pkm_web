@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "arcadeIn";
+  src: url("../font/8-bitArcadeIn.ttf") format("truetype");
+}
+@font-face {
+  font-family: "arcadeOut";
+  src: url("../font/8-bitArcadeOut.ttf") format("truetype");
+}
+@font-face {
+  font-family: "icons";
+  src: url("../font/EmojiFont.ttf") format("truetype");
+  font-weight: 700;
+}
+.displayPkms {
+  width: 100%;
+  height: 100%;
+  padding: 40px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  overflow: auto;
+}
+
+.displayCard {
+  width: 300px;
+  height: 450px;
+}
+
+button {
+  display: none;
+}

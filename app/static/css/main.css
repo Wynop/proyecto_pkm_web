@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "arcadeIn";
+  src: url("../font/8-bitArcadeIn.ttf") format("truetype");
+}
+@font-face {
+  font-family: "arcadeOut";
+  src: url("../font/8-bitArcadeOut.ttf") format("truetype");
+}
+@font-face {
+  font-family: "icons";
+  src: url("../font/EmojiFont.ttf") format("truetype");
+  font-weight: 700;
+}
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+  text-align: start;
+  font-family: "pixel", monospace;
+  font-weight: 400;
+  color: #060509;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #060509;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0deg, #F1EBDD 50%, #EE8A75 50%);
+  border-radius: 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  #root {
+    width: 375px;
+    height: 812px;
+    border-radius: 20px;
+  }
+}
+.bg-fire {
+  background-color: #fbaf85;
+}
+
+.bg-electric {
+  background-color: #f7e38c;
+}
+
+.bg-grass {
+  background-color: #a0eaa5;
+}
+
+.bg-water {
+  background-color: #74c5f3;
+}
+
+.bg-ice {
+  background-color: #5fc4cb;
+}
+
+.bg-dark {
+  background-color: #a59de6;
+}
+
+.bg-fairy {
+  background-color: #f2c1cc;
+}
+
+.bg-psychic {
+  background-color: #e4acea;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.f-w {
+  color: #F1EBDD;
+}
+
+.btt-link {
+  font-family: "arcadeIn";
+  font-size: 40px;
+  color: #F1EBDD;
+  text-shadow: 2px 2px 0 #060509, -2px 2px 0 #060509, 2px -2px 0 #060509, -2px -2px 0 #060509;
+}
+
+.btt-link:hover {
+  color: #EE8A75;
+  text-shadow: 2px 2px 0 #F1EBDD, -2px 2px 0 #F1EBDD, 2px -2px 0 #F1EBDD, -2px -2px 0 #F1EBDD;
+}

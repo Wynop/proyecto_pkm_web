@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "arcadeIn";
+  src: url("../font/8-bitArcadeIn.ttf") format("truetype");
+}
+@font-face {
+  font-family: "arcadeOut";
+  src: url("../font/8-bitArcadeOut.ttf") format("truetype");
+}
+@font-face {
+  font-family: "icons";
+  src: url("../font/EmojiFont.ttf") format("truetype");
+  font-weight: 700;
+}
+#root {
+  justify-content: center;
+  background: rgba(255, 0, 0, 0);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.video-background {
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

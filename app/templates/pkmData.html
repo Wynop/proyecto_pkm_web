@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <link rel="stylesheet" href="../static/css/pkmList.css" />
+    <title>PKM-BATTLE</title>
+  </head>
+  <body>
+    <div id="root">
+      <a href="/"><h1>PKM-BATTLE</h1></a>
+      <section class="displayPkms">
+        <article class="displayCard bg-{{ pkm.types[0] }}">
+          <!-- <figure>
+            <img src=" type img" alt="{{ pkm.types[0].name }}" />
+            <figcaption>
+              <h4 class="f-w">{{ pkm.types[0].name }}</h4>
+            </figcaption>
+          </figure> -->
+
+          <div class="info">
+            <figure>
+              <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
+              <figcaption>
+                <span>weight: {{ pkm.weight }}</span>
+              </figcaption>
+            </figure>
+
+            <h2>{{ pkm.name }}</h2>
+
+            <div class="stats">
+              {% for stat in pkm.stats %}
+              <div>
+                <h3>{{ stat.name }}</h3>
+                <div class="statValue">{{ stat.value }}</div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="ataques">
+              {% for move in pkm.moves %}
+              <div class="ataque">
+                <h3>{{ move.name }}</h3>
+
+                <div class="attackInfo">
+                  <span>Power: {{ move.power }}</span>
+                  <span>Accuracy: {{ move.accuracy }}</span>
+                  <span>Type: {{ move.type }}</span>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <a href="/pkm-list">Volver al listado</a>
+        </article>
+      </section>
+    </div>
+  </body>
+</html>
