@@ -28,7 +28,10 @@
 }
 #root {
   justify-content: center;
-  background: rgba(255, 0, 0, 0);
+}
+
+img {
+  width: 50%;
 }
 
 .menu {
@@ -36,23 +39,4 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
-}
-
-.video-background {
-  position: absolute;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-.video-background iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 56.25vw;
-  min-width: 177.78vh;
-  min-height: 100vh;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
 }

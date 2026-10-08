@@ -53,6 +53,7 @@ body {
   height: 100vh;
   background: linear-gradient(0deg, #F1EBDD 50%, #EE8A75 50%);
   border-radius: 0;
+  overflow: hidden;
   padding: 40px;
   display: flex;
   flex-direction: column;
