@@ -100,6 +100,184 @@ body {
   background-color: #e4acea;
 }
 
+.bg-t-cloud {
+  background-image: linear-gradient(45deg, transparent 10%, #060509 50%, transparent 70%), url("https://opengameart.org/sites/default/files/oga-textures/127775/perlin%2010%20-%20256x256.png");
+  background-size: 100% 100%, 180px 180px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
+}
+
+.bg-t-metal {
+  background-image: linear-gradient(180deg, #060509 0%, transparent 20%, #060509 80%), url("https://img.magnific.com/free-photo/brushed-metal-background_1048-10283.jpg?semt=ais_hybrid&w=740&q=80");
+  background-size: 100% 100%, 100px 100px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
+}
+
+.bg-img-normal {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/3/33/20230219185607%21Tipo_normal_icono_EpEc.svg");
+}
+
+.bg-img-fire {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/c/c6/20230219185532%21Tipo_fuego_icono_EpEc.svg");
+}
+
+.bg-img-water {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/8/8b/20230219185402%21Tipo_agua_icono_EpEc.svg");
+}
+
+.bg-img-electric {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/e/e4/20230219185433%21Tipo_el%C3%A9ctrico_icono_EpEc.svg");
+}
+
+.bg-img-grass {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/0/0d/20230219183707%21Tipo_planta_icono_EpEc.svg");
+}
+
+.bg-img-ice {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/8/8b/20230219185548%21Tipo_hielo_icono_EpEc.svg");
+}
+
+.bg-img-fighting {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/3/32/20230219185557%21Tipo_lucha_icono_EpEc.svg");
+}
+
+.bg-img-poison {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/b/b0/20230219185709%21Tipo_veneno_icono_EpEc.svg");
+}
+
+.bg-img-ground {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/a/a5/20230219185659%21Tipo_tierra_icono_EpEc.svg");
+}
+
+.bg-img-flying {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/e/e1/20230219185722%21Tipo_volador_icono_EpEc.svg");
+}
+
+.bg-img-psychic {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/a/a1/20230219185629%21Tipo_ps%C3%ADquico_icono_EpEc.svg");
+}
+
+.bg-img-bug {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/8/8c/20230219185413%21Tipo_bicho_icono_EpEc.svg");
+}
+
+.bg-img-rock {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/e/ee/20230219185641%21Tipo_roca_icono_EpEc.svg");
+}
+
+.bg-img-ghost {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/2/23/20230219185442%21Tipo_fantasma_icono_EpEc.svg");
+}
+
+.bg-img-dragon {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/d/dd/20230219185423%21Tipo_drag%C3%B3n_icono_EpEc.svg");
+}
+
+.bg-img-dark {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/6/62/20230219185650%21Tipo_siniestro_icono_EpEc.svg");
+}
+
+.bg-img-steel {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/f/f1/20230219185340%21Tipo_acero_icono_EpEc.svg");
+}
+
+.bg-img-fairy {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/4/49/20230219185540%21Tipo_hada_icono_EpEc.svg");
+}
+
 h1 {
   font-weight: 700;
   font-size: 48px;
@@ -129,4 +307,48 @@ h3 {
 .btt-link:hover {
   color: #EE8A75;
   text-shadow: 2px 2px 0 #F1EBDD, -2px 2px 0 #F1EBDD, 2px -2px 0 #F1EBDD, -2px -2px 0 #F1EBDD;
+}
+
+.displayCard {
+  width: 300px;
+  height: 450px;
+  border-radius: 40px 10px 10px 10px;
+  overflow: hidden;
+  border: 10px solid #7b8699;
+}
+.displayCard .head {
+  width: 100%;
+  background-color: #F1EBDD;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.displayCard .head h3 {
+  position: relative;
+  top: 11px;
+  left: 11px;
+  width: 50%;
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.displayCard .info {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.displayCard .info figure {
+  width: 150px;
+  height: 150px;
+  background-color: #F1EBDD;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 80%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

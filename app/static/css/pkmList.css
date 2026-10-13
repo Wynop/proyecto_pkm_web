@@ -28,18 +28,11 @@
 }
 .displayPkms {
   width: 100%;
-  height: 100%;
   padding: 40px 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  overflow: auto;
-}
-
-.displayCard {
-  width: 300px;
-  height: 450px;
 }
 
 button {

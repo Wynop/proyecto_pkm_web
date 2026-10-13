@@ -1,23 +1,19 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/main.css" />
-    <link rel="stylesheet" href="../static/css/index.css" />
-    <title>PKM-BATTLE</title>
-  </head>
-  <body>
-    <div id="root">
-      <img src="../static/img/pokeball.png" alt="pokeball">
-      <a href="/"><h1 >PKM-BATTLE</h1></a>
-      <nav class="menu">
-        <a class="btt-link" href="">Jugar</a>
-        <a class="btt-link" href="/pkm-list">PKM disponibles</a>
-        <a class="btt-link" href="">Jugar</a>
-        <a class="btt-link" href="">Jugar</a>
-      </nav>
-      </div>
-    </div>
-  </body>
-</html>
+{% extends "_base.html" %}
+
+{% block subTitle %} - Inicio{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+
+{% block content %}
+  <img src="../static/img/pokeball.png" alt="pokeball">
+  <a href="/"><h1 >PKM-BATTLE</h1></a>
+  <nav class="menu">
+    <a class="btt-link" href="">Jugar</a>
+    <a class="btt-link" href="/pkm-list">PKM disponibles</a>
+    <a class="btt-link" href="">Jugar</a>
+    <a class="btt-link" href="">Jugar</a>
+  </nav>
+  </div>
+{% endblock %}
