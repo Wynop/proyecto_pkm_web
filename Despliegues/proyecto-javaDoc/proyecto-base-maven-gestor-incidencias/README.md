@@ -6,17 +6,14 @@ El README explica el proyecto de forma global. Los comentarios Javadoc incluidos
 
 ## Funcionalidades
 
-- Crear tareas.
-- Modificar su título.
-- Marcar tareas como completadas.
-- Reabrir tareas.
-- Buscar una tarea por identificador.
-- Listar todas las tareas.
-- Listar únicamente las pendientes.
+- Mostrar todas las incidencias.
+- Mostrar las incidencias abiertas.
+- Buscar incidencias.
+- Consultar una incidencia por su ID.
 
 ## Requisitos
 
-- JDK 21 o compatible.
+- JDK 27 o compatible.
 
 Comprueba la instalación:
 
@@ -29,7 +26,7 @@ javadoc --version
 ## Estructura
 
 ```text
-proyecto-ejemplo-javadoc/
+proyecto-base-maven-gestor-incidencias/
 ├── README.md
 ├── src/
 │   └── com/
@@ -46,14 +43,9 @@ proyecto-ejemplo-javadoc/
 Desde la raíz:
 
 ```bash
-javac -d out src/com/ejemplo/tareas/*.java
+.\mvnw.cmd clean compile exec:java
 ```
 
-## Ejecución
-
-```bash
-java -cp out com.ejemplo.tareas.Main
-```
 
 ## Generar Javadoc
 
@@ -83,9 +75,3 @@ Busca en la documentación generada ejemplos de:
 - `{@link}`.
 
 Comprueba también cómo Javadoc representa el método marcado con `@Deprecated`.
-
-## Idea principal
-
-El README responde a preguntas sobre **el proyecto**.
-
-Javadoc responde a preguntas sobre **cómo utilizar sus componentes Java**.
