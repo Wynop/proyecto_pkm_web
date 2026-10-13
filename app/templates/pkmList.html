@@ -1,9 +1,5 @@
-{% extends "_base.html" %}
-{% import "_macros.html" as components %}
-
-{% block subTitle %} - pkmList{% endblock %}
-
-{% block styles %}
+{% extends "_base.html" %} {% import "_macros.html" as components %} {% block
+subTitle %} - pkmList{% endblock %} {% block styles %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/pkmList.css') }}"
@@ -12,12 +8,9 @@
 <a href="/"><h1>PKM-BATTLE</h1></a>
 <h2>VIEW THE MONS</h2>
 <section class="displayPkms">
-  <button class="prev" type="button"><</button>
-  <button class="next" type="button">></button>
-
-  {% for pkm in data %}
-    {{ components.pkmCardL(pkm) }}
-  {% endfor %}
+  <div class="displayCarrusel" >
+    {% for pkm in data %} {{ components.pkmCardL(pkm, abv) }} {% endfor %}
+  </div>
 </section>
 
 {% endblock %}

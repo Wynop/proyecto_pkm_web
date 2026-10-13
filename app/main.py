@@ -6,6 +6,15 @@ app = Flask(__name__)
 with open("data/pokemons-eeveelutions.json", "r", encoding="utf-8") as archivo:
     data = json.load(archivo)
 
+abv = {
+    "hp": "PS",
+    "attack": "ATQ",
+    "defense": "DEF",
+    "special-attack": "AT.E.",
+    "special-defense": "DEF.E.",
+    "speed": "VEL"
+}
+
 
 @app.route("/")
 def index():
@@ -14,11 +23,11 @@ def index():
 
 @app.route("/pkm-list")
 def pkmList():
-    return render_template("pkmList.html", data=data)
+    return render_template("pkmList.html", data=data, abv=abv)
 
 
 @app.route("/pkm/<int:id>")
-def pkmData(id):
+def pkmData(id, abv=abv):
 
     pokemon = {}
 

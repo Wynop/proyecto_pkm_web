@@ -37,6 +37,12 @@
   font-family: "pixel", monospace;
   font-weight: 400;
   color: #060509;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -46,6 +52,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 #root {
@@ -293,6 +300,10 @@ h3 {
   font-size: 20px;
 }
 
+figcaption {
+  font-size: 14px;
+}
+
 .f-w {
   color: #F1EBDD;
 }
@@ -310,11 +321,15 @@ h3 {
 }
 
 .displayCard {
-  width: 300px;
+  width: 280px;
   height: 450px;
   border-radius: 40px 10px 10px 10px;
   overflow: hidden;
   border: 10px solid #7b8699;
+}
+.displayCard h2 {
+  font-weight: 700;
+  font-size: 24px;
 }
 .displayCard .head {
   width: 100%;
@@ -323,6 +338,12 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.displayCard .head div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 .displayCard .head h3 {
   position: relative;
@@ -342,6 +363,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 .displayCard .info figure {
   width: 150px;
@@ -351,4 +373,68 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.displayCard .info figure img {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  opacity: 0;
+  animation: cambiar-foto 12s infinite;
+}
+.displayCard .info figure img:nth-child(1) {
+  animation-delay: 0s;
+}
+.displayCard .info figure img:nth-child(2) {
+  animation-delay: 3s;
+}
+.displayCard .info figure img:nth-child(3) {
+  animation-delay: 6s;
+}
+.displayCard .info figure img:nth-child(4) {
+  animation-delay: 9s;
+}
+.displayCard .info figure figcaption {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.displayCard .info .stats {
+  width: 100%;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 3px 20px;
+}
+.displayCard .info .stats .statValue {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+}
+.displayCard .info .stats .statBar {
+  height: 100%;
+  border-radius: 12px;
+  background-color: #F2f2f2;
+}
+.displayCard .info a {
+  position: relative;
+  left: 20%;
+}
+
+@keyframes cambiar-foto {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }

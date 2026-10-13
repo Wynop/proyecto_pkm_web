@@ -1,31 +1,36 @@
-{% macro pkmCardL(pkm) %}
-    <article class="displayCard bg-{{ pkm.types[0] }}">
-    <div class="head">
+{% macro pkmCardL(pkm, abv) %}
+<article class="displayCard bg-{{ pkm.types[0] }}">
+  <div class="head">
+    <div>
       <div class="bg-img-{{ pkm.types[0] }}"></div>
-      <h3 class=" bg-{{ pkm.types[0] }}">#{{ pkm.id }}</h3>
-    </div>
-
-    <div class="info">
-      <figure>
-        <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
-        <figcaption>
-          <span>height: {{ pkm.height }}</span>
-          <span>weight: {{ pkm.weight }}</span>
-        </figcaption>
-      </figure>
-
       <h2>{{ pkm.name }}</h2>
-
-      <div class="stats">
-        {% for stat in pkm.stats %}
-        <div>
-          <h3>{{ stat.name }}</h3>
-          <div class="statValue">{{ stat.value }}</div>
-        </div>
-        {% endfor %}
-      </div>
     </div>
+    <h3 class=" bg-{{ pkm.types[0] }}">#{{ pkm.id }}</h3>
+  </div>
 
+  <div class="info">
+    <figure>
+      <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites.back_default }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites.front_shiny }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites.back_shiny }}" alt="{{ pkm.name }}" />
+      <figcaption>
+        <span>height: {{ pkm.height }}</span>
+        <span>weight: {{ pkm.weight }}</span>
+      </figcaption>
+    </figure>
+    <div class="stats">
+      {% for stat in pkm.stats %}
+      <h3>{{ abv.get(stat.name, stat.name) }}</h3>
+      <div class="statValue">
+        <div
+          class="statBar"
+          style="width: {{ (stat.value / 255 * 100) }}%;"
+        ></div>
+      </div>
+      {% endfor %}
+    </div>
     <a href="/pkm/{{ pkm.id }}">Details</a>
-  </article>
+  </div>
+</article>
 {% endmacro %}
