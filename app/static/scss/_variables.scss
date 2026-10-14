@@ -1,0 +1,71 @@
+$c-P1: #EE8A75;
+$c-N0: #F2f2f2;
+$c-N1: #F1EBDD;
+$c-N2: #7b8699;
+$c-N3: #060509;
+$c-S1: #fbaf85;
+$c-S2: #f7e38c;
+$c-S3: #a0eaa5;
+$c-S4: #74c5f3;
+$c-S5: #5fc4cb;
+$c-S6: #a59de6;
+$c-S7: #e4acea;
+$c-S8: #f2c1cc;
+
+@font-face {
+    font-family: 'pixel';
+    src: url('../font/PixelifySans-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'pixel';
+    src: url('../font/PixelifySans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'pixel';
+    src: url('../font/PixelifySans-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'arcadeIn';
+    src: url('../font/8-bitArcadeIn.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'arcadeOut';
+    src: url('../font/8-bitArcadeOut.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'icons';
+    src: url('../font/EmojiFont.ttf') format('truetype');
+    font-weight: 700;
+}
+
+$f-icon: 'icons';
+$f-def: 'pixel', monospace;
+$f-head: 'arcadeIn';
+$f-head2: 'arcadeOut';
+$f-regular: 400;
+$f-medium: 600;
+$f-bold: 700;
+
+$fs-xs: 12px;
+$fs-sm: 14px;
+$fs-md: 16px;
+$fs-lg: 18px;
+$fs-xl: 20px;
+$fs-2xl: 24px;
+$fs-3xl: 32px;
+$fs-4xl: 40px;
+$fs-5xl: 48px;
+
+$lh-s: 1.2;
+$lh-m: 1.5;
+$lh-l: 1.75;
+
+$s-xs: 3px;
+$s-s: 5px;
+$s-m: 10px;
+$s-l: 20px;
+$s-xl: 40px;
+$s-xxl: 100px;

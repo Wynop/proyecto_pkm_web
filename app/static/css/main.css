@@ -414,7 +414,11 @@ figcaption {
 .displayCard .info .stats .statBar {
   height: 100%;
   border-radius: 12px;
-  background-color: #F2f2f2;
+  min-width: 2;
+  border: black solid 2px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
 }
 .displayCard .info a {
   position: relative;
