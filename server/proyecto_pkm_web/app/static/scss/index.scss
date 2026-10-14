@@ -1,0 +1,17 @@
+@use "./variables" as v;
+
+#root {
+  justify-content: center;
+}
+
+img {
+  width: 50%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: v.$s-m;
+  align-items: center;
+}
+

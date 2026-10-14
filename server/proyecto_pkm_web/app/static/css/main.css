@@ -404,7 +404,6 @@ figcaption {
   display: grid;
   grid-template-columns: 50px 1fr;
   gap: 3px 20px;
-
 }
 .displayCard .info .stats .statValue {
   width: 100%;
@@ -417,11 +416,9 @@ figcaption {
   border-radius: 12px;
   min-width: 2;
   border: black solid 2px;
-
   padding: 0 5px;
   display: flex;
   align-items: center;
-
 }
 .displayCard .info a {
   position: relative;

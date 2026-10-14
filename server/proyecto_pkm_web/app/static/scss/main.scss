@@ -1,0 +1,396 @@
+@use "./variables" as v;
+
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+  text-align: start;
+
+  font-family: v.$f-def;
+  font-weight: v.$f-regular;
+  color: v.$c-N3;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: v.$c-N3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0deg, v.$c-N1 50%, v.$c-P1 50%);
+  border-radius: 0;
+  overflow: hidden;
+
+  padding: v.$s-xl;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$s-l;
+}
+
+@media (min-width: 768px) {
+  #root {
+    width: 375px;
+    height: 812px;
+    border-radius: v.$s-l;
+  }
+}
+
+//fondos
+
+.bg-fire {
+  background-color: v.$c-S1;
+}
+.bg-electric {
+  background-color: v.$c-S2;
+}
+.bg-grass {
+  background-color: v.$c-S3;
+}
+.bg-water {
+  background-color: v.$c-S4;
+}
+.bg-ice {
+  background-color: v.$c-S5;
+}
+.bg-dark {
+  background-color: v.$c-S6;
+}
+.bg-fairy {
+  background-color: v.$c-S8;
+}
+.bg-psychic {
+  background-color: v.$c-S7;
+}
+.bg-t-cloud {
+  background-image:
+    linear-gradient(45deg, transparent 10%, v.$c-N3 50%, transparent 70%),
+    url("https://opengameart.org/sites/default/files/oga-textures/127775/perlin%2010%20-%20256x256.png");
+
+  background-size:
+    100% 100%,
+    180px 180px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
+}
+.bg-t-metal {
+  background-image:
+    linear-gradient(180deg, v.$c-N3 0%, transparent 20%, v.$c-N3 80%),
+    url("https://img.magnific.com/free-photo/brushed-metal-background_1048-10283.jpg?semt=ais_hybrid&w=740&q=80");
+
+  background-size:
+    100% 100%,
+    100px 100px;
+  background-position: center, center;
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
+}
+@mixin bg-img-base {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: v.$s-xl;
+  width: v.$s-xl;
+}
+.bg-img-normal {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/3/33/20230219185607%21Tipo_normal_icono_EpEc.svg");
+}
+
+.bg-img-fire {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/c/c6/20230219185532%21Tipo_fuego_icono_EpEc.svg");
+}
+
+.bg-img-water {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/8/8b/20230219185402%21Tipo_agua_icono_EpEc.svg");
+}
+
+.bg-img-electric {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/e/e4/20230219185433%21Tipo_el%C3%A9ctrico_icono_EpEc.svg");
+}
+
+.bg-img-grass {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/0/0d/20230219183707%21Tipo_planta_icono_EpEc.svg");
+}
+
+.bg-img-ice {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/8/8b/20230219185548%21Tipo_hielo_icono_EpEc.svg");
+}
+
+.bg-img-fighting {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/3/32/20230219185557%21Tipo_lucha_icono_EpEc.svg");
+}
+
+.bg-img-poison {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/b/b0/20230219185709%21Tipo_veneno_icono_EpEc.svg");
+}
+
+.bg-img-ground {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/a/a5/20230219185659%21Tipo_tierra_icono_EpEc.svg");
+}
+
+.bg-img-flying {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/e/e1/20230219185722%21Tipo_volador_icono_EpEc.svg");
+}
+
+.bg-img-psychic {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/a/a1/20230219185629%21Tipo_ps%C3%ADquico_icono_EpEc.svg");
+}
+
+.bg-img-bug {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/8/8c/20230219185413%21Tipo_bicho_icono_EpEc.svg");
+}
+
+.bg-img-rock {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/e/ee/20230219185641%21Tipo_roca_icono_EpEc.svg");
+}
+
+.bg-img-ghost {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/2/23/20230219185442%21Tipo_fantasma_icono_EpEc.svg");
+}
+
+.bg-img-dragon {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/d/dd/20230219185423%21Tipo_drag%C3%B3n_icono_EpEc.svg");
+}
+
+.bg-img-dark {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/6/62/20230219185650%21Tipo_siniestro_icono_EpEc.svg");
+}
+
+.bg-img-steel {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/f/f1/20230219185340%21Tipo_acero_icono_EpEc.svg");
+}
+
+.bg-img-fairy {
+  @include bg-img-base;
+  background-image: url("https://images2.wikidexcdn.net/mwuploads/wikidex/archive/4/49/20230219185540%21Tipo_hada_icono_EpEc.svg");
+}
+
+//text
+
+h1 {
+  font-weight: v.$f-bold;
+  font-size: v.$fs-5xl;
+}
+
+h2 {
+  font-weight: v.$f-bold;
+  font-size: v.$fs-3xl;
+}
+
+h3 {
+  font-weight: v.$f-bold;
+  font-size: v.$fs-xl;
+}
+figcaption {
+  font-size: v.$fs-sm;
+}
+
+.f-w {
+  color: v.$c-N1;
+}
+
+//Botones
+
+.btt-link {
+  font-family: v.$f-head;
+  font-size: v.$fs-4xl;
+  color: v.$c-N1;
+  text-shadow:
+    2px 2px 0 v.$c-N3,
+    -2px 2px 0 v.$c-N3,
+    2px -2px 0 v.$c-N3,
+    -2px -2px 0 v.$c-N3;
+}
+
+.btt-link:hover {
+  color: v.$c-P1;
+  text-shadow:
+    2px 2px 0 v.$c-N1,
+    -2px 2px 0 v.$c-N1,
+    2px -2px 0 v.$c-N1,
+    -2px -2px 0 v.$c-N1;
+}
+
+//Macros
+
+.displayCard {
+  width: 280px;
+  height: 450px;
+  border-radius: v.$s-xl v.$s-m v.$s-m v.$s-m;
+  overflow: hidden;
+
+  border: v.$s-m solid v.$c-N2;
+
+  //position: absolute;
+  h2 {
+    font-weight: v.$f-bold;
+    font-size: v.$fs-2xl;
+  }
+  .head {
+    width: 100%;
+    background-color: v.$c-N1;
+
+    padding: v.$s-m;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: v.$s-m;
+    }
+    h3 {
+      position: relative;
+      top: v.$s-m + 1;
+      left: v.$s-m + 1;
+
+      width: 50%;
+      clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+
+      padding-right: v.$s-m;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+  .info {
+    width: 100%;
+
+    padding: v.$s-l 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$s-m;
+
+    figure {
+      width: 150px;
+      height: 150px;
+      background-color: v.$c-N1;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 80%);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        position: absolute;
+
+        height: 100px;
+        width: 100px;
+
+        opacity: 0;
+        animation: cambiar-foto 12s infinite;
+      }
+      img:nth-child(1) {
+        animation-delay: 0s;
+      }
+      img:nth-child(2) {
+        animation-delay: 3s;
+      }
+      img:nth-child(3) {
+        animation-delay: 6s;
+      }
+      img:nth-child(4) {
+        animation-delay: 9s;
+      }
+      figcaption {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .stats {
+      width: 100%;
+      padding: 0 v.$s-xl;
+
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: v.$s-xs v.$s-l;
+      .statValue {
+        width: 100%;
+        height: 80%;
+
+        display: flex;
+        align-items: center;
+      }
+      .statBar {
+        height: 100%;
+        border-radius: 12px;
+        min-width: 2;
+        border: black solid 2px;
+
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    a {
+      position: relative;
+      left: 20%;
+    }
+  }
+}
+
+@keyframes cambiar-foto {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
