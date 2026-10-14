@@ -54,7 +54,7 @@ Crea y activa un entorno virtual:
 python -m venv venv
 ```
 
-En Windows:
+Activar:
 
 ```bash
 venv\Scripts\activate
@@ -63,13 +63,13 @@ venv\Scripts\activate
 Instala las dependencias:
 
 ```bash
-pip install flask
+pip install -r requirements.txt
 ```
 
 Ejecuta la aplicación:
 
 ```bash
-flask --app app run
+py app/main.py
 ```
 
 Después, abre:
