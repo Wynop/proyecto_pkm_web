@@ -6,7 +6,10 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
 />
 {% endblock %} {% block content %}
 <a href="/"><h1>PKM-BATTLE</h1></a>
-<h2>VIEW THE MONS</h2>
+<h2 style="text-align: center;">
+  Hello {{ session["name"] }} <br>
+  VIEW THE MONS <a href=""><span>more</span></a>
+</h2>
 <section class="displayPkms">
   <div class="displayCarrusel" >
     {% for pkm in data %} {{ components.pkmCardL(pkm, abv) }} {% endfor %}
