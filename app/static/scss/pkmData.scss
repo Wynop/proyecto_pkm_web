@@ -1,0 +1,141 @@
+@use "./variables" as v;
+
+.pkmData {
+  width: 100%;
+  min-height: calc(100% + v.$s-xl);
+  overflow: scroll;
+  padding-bottom: v.$s-xl;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  h1 {
+    width: 100%;
+  }
+  h2 {
+    margin: v.$s-s 0;
+    text-align: center;
+  }
+  h3 {
+    margin-top: v.$s-s;
+    margin-bottom: v.$s-xs;
+  }
+  .info {
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$s-m;
+
+    figure {
+      width: 90%;
+      aspect-ratio: 4/3;
+      background-color: v.$c-N1;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 80%);
+
+      display: grid;
+      place-items: center;
+
+      figcaption {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: v.$s-s;
+      }
+
+      img {
+        grid-area: 1 / 1;
+        width: 70%;
+        height: auto;
+
+        opacity: 0;
+        animation: cambiar-foto 12s infinite;
+      }
+      img:nth-child(1) {
+        animation-delay: 0s;
+      }
+      img:nth-child(2) {
+        animation-delay: 3s;
+      }
+      img:nth-child(3) {
+        animation-delay: 6s;
+      }
+      img:nth-child(4) {
+        animation-delay: 9s;
+      }
+    }
+  }
+  .stats {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    .statValue {
+      width: 100%;
+      height: 80%;
+
+      display: flex;
+      align-items: center;
+    }
+    .statBar {
+      height: 100%;
+      border-radius: 12px;
+      min-width: 2;
+      border: v.$c-N3 solid 2px;
+
+      padding: 0 5px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .moves {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$s-m;
+    > div {
+      background-color: v.$c-N1;
+      width: 100%;
+      border: v.$c-N3 solid 2px;
+      border-radius: 12px;
+      padding: v.$s-m;
+
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 1fr 1fr;
+      column-gap: v.$s-m;
+      > :first-child {
+        height: 100%;
+
+        grid-column: 1;
+        grid-row: 1 / 3;
+      }
+    }
+  }
+
+  @keyframes cambiar-foto {
+    0% {
+      opacity: 0;
+    }
+
+    5% {
+      opacity: 1;
+    }
+
+    25% {
+      opacity: 1;
+    }
+
+    30% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}

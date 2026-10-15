@@ -300,6 +300,11 @@ h3 {
   font-size: 20px;
 }
 
+span {
+  font-weight: 700;
+  font-size: 20px;
+}
+
 figcaption {
   font-size: 14px;
 }

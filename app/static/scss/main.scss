@@ -57,7 +57,6 @@ body {
 }
 
 //fondos
-
 .bg-fire {
   background-color: v.$c-S1;
 }
@@ -219,6 +218,10 @@ h3 {
   font-weight: v.$f-bold;
   font-size: v.$fs-xl;
 }
+span {
+  font-weight: v.$f-bold;
+  font-size: v.$fs-l;
+}
 figcaption {
   font-size: v.$fs-sm;
 }
@@ -358,7 +361,7 @@ figcaption {
         height: 100%;
         border-radius: 12px;
         min-width: 2;
-        border: black solid 2px;
+        border: v.$c-N3 solid 2px;
 
         padding: 0 5px;
         display: flex;
