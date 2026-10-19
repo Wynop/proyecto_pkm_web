@@ -1,5 +1,20 @@
 @use "./variables" as v;
 
+.selectorMon {
+  form {
+    width: 100%;
+    padding: v.$s-m 0;
+    border-bottom: 2px solid v.$c-N1;
+
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: v.$s-m;
+    button {
+    justify-self: start;
+    padding: v.$s-s v.$s-m;
+    }
+  }
+}
 .displayPkms {
   display: flex;
   flex-direction: column;
@@ -8,16 +23,13 @@
   overflow-y: scroll;
   border-radius: v.$s-m;
 
-  .displayCarrusel{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: v.$s-xl;
-  position: relative;
-  padding: 0 0 v.$s-m 0 ;
-
+  .displayCarrusel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$s-xl;
+    position: relative;
+    padding: 0 0 v.$s-m 0;
   }
 }
 
-button {
-}

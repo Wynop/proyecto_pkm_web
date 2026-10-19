@@ -1,0 +1,122 @@
+@use "./variables" as v;
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr 6fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 0px;
+  padding-top: v.$s-xl;
+  background-color: v.$c-N3;
+  background: v.$c-N3;
+  border: 2px v.$c-P1 solid;
+}
+.goBack {
+  position: absolute;
+  left: v.$s-m;
+  top: v.$s-s;
+}
+.screen {
+  aspect-ratio: 16/9;
+  background-image: url("https://images.wikidexcdn.net/mwuploads/wikidex/3/3d/latest/20090424143349/Campo_de_batalla_DPPt_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  .atqSprite {
+    grid-area: 3 / 1 / 6 / 4;
+    width: 100%;
+    height: 100%;
+
+    width: 200%;
+    height: 200%;
+    object-fit: contain;
+
+    position: relative;
+    left: -70%;
+    top: -40%;
+  }
+  .defSprite {
+    grid-area: 1 / 4 / 5 / 6;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    position: relative;
+    left: -10%;
+    top: 10%;
+  }
+  .atqPkm {
+    background-color: v.$c-N1;
+    grid-area: 5 / 3 / 6 / 6;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+
+    padding: v.$s-s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .defPkm {
+    background-color: v.$c-N1;
+    grid-area: 1 / 1 / 2 / 4;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+
+    padding: v.$s-s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hpBar {
+    width: 75%;
+    background-color: v.$c-S3;
+    border-radius: 12px;
+    border: v.$c-N3 solid 2px;
+
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+  }
+}
+.msg {
+  margin: v.$s-m v.$s-m v.$s-l v.$s-m;
+  padding: v.$s-m;
+  border: v.$c-N1 2px solid;
+  height: 100px;
+  p {
+    color: v.$c-N1;
+  }
+}
+.menu {
+  height: 100%;
+  background-color: v.$c-N1;
+
+  padding: v.$s-l;
+  display: flex;
+  flex-direction: column;
+  gap: v.$s-m;
+  article {
+    height: v.$s-xxl;
+    border-radius: v.$s-xl v.$s-m v.$s-m v.$s-xl;
+    border: v.$s-m solid v.$c-N2;
+
+    padding: v.$s-m ;
+    display: flex;
+    align-items: center;
+    gap: v.$s-m;
+  }  
+  article:hover{
+    border: v.$s-m solid v.$c-P1;
+  }
+}

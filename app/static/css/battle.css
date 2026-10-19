@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "pixel";
+  src: url("../font/PixelifySans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "arcadeIn";
+  src: url("../font/8-bitArcadeIn.ttf") format("truetype");
+}
+@font-face {
+  font-family: "arcadeOut";
+  src: url("../font/8-bitArcadeOut.ttf") format("truetype");
+}
+@font-face {
+  font-family: "icons";
+  src: url("../font/EmojiFont.ttf") format("truetype");
+  font-weight: 700;
+}
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 1fr 6fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 0px;
+  padding-top: 40px;
+  background-color: #060509;
+  background: #060509;
+  border: 2px #EE8A75 solid;
+}
+
+.goBack {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+.screen {
+  aspect-ratio: 16/9;
+  background-image: url("https://images.wikidexcdn.net/mwuploads/wikidex/3/3d/latest/20090424143349/Campo_de_batalla_DPPt_6.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.screen .atqSprite {
+  grid-area: 3/1/6/4;
+  width: 100%;
+  height: 100%;
+  width: 200%;
+  height: 200%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: relative;
+  left: -70%;
+  top: -40%;
+}
+.screen .defSprite {
+  grid-area: 1/4/5/6;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: relative;
+  left: -10%;
+  top: 10%;
+}
+.screen .atqPkm {
+  background-color: #F1EBDD;
+  grid-area: 5/3/6/6;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.screen .defPkm {
+  background-color: #F1EBDD;
+  grid-area: 1/1/2/4;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.screen .hpBar {
+  width: 75%;
+  background-color: #a0eaa5;
+  border-radius: 12px;
+  border: #060509 solid 2px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+}
+
+.msg {
+  margin: 10px 10px 20px 10px;
+  padding: 10px;
+  border: #F1EBDD 2px solid;
+  height: 100px;
+}
+.msg p {
+  color: #F1EBDD;
+}
+
+.menu {
+  height: 100%;
+  background-color: #F1EBDD;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.menu article {
+  height: 80px;
+  border-radius: 40px 10px 10px 40px;
+  border: 10px solid #7b8699;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.menu article:hover {
+  border: 10px solid #EE8A75;
+}

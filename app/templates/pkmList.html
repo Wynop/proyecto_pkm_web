@@ -1,17 +1,17 @@
-{% extends "_base.html" %} {% import "_macros.html" as components %}
-{% block subTitle %} - pkmList{% endblock %} {% block styles %}
+{% extends "_base.html" %} {% import "_macros.html" as components %} {% block
+subTitle %} - pkmList{% endblock %} {% block styles %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/pkmList.css') }}"
 />
 {% endblock %} {% block content %}
-<a href="/"><h1>PKM-BATTLE</h1></a>
+<a href="{{url_for('index')}}"><h1>PKM-BATTLE</h1></a>
 <h2 style="text-align: center">
   Hello {{ session["name"] }} <br />
-  VIEW THE MONS <a href=""><span>more</span></a>
+  VIEW THE MONS
 </h2>
 <section class="selectorMon">
-  <form method="POST" action="{{ url_for('battle') }}">
+  <form method="POST" action="{{ url_for('pkmList') }}">
     <label for="pokemon">Choose your Pokémon:</label>
     <input
       type="text"
@@ -27,32 +27,47 @@
       <option value="{{ pkm.name }}">{% endfor %}</option>
     </datalist>
 
-    {% if error %}
-    <p class="error">{{ error }}</p>
+    {% if errorBattle %}
+    <p class="error">{{ errorBattle }}</p>
     {% endif %}
 
-    <button type="submit">Battle</button>
-  </form><form method="POST" action="{{ url_for('filter') }}">
-    <label for="pokemon">Choose your Pokémon:</label>
+    <button type="submit" name="action" value="battle">Battle</button>
+  </form>
+  <form method="POST" action="{{ url_for('pkmList') }}">
+    <label for="pokemon">Filter by name:</label>
     <input
       type="text"
       id="pokemon"
       name="pokemon"
       list="pokemon-list"
+      value="{{ filter[0] if filter else '' }}"
       placeholder="Enter a Pokémon name..."
-      required
     />
+    <label for="type">Filter by type:</label>
+    <select name="type" id="type">
+      <option value="" {% if filter and filter[1]=="" %}selected{% endif %}>
+        All types
+      </option>
 
-    {% if error %}
-    <p class="error">{{ error }}</p>
+      {% for type in types %}
+      <option value="{{ type }}" {% if filter and filter[1]== type %}selected{% endif %} >
+        {{ type | capitalize }}
+      </option>
+      {% endfor %}
+    </select>
+
+    <button type="submit" name="action" value="filter">Filter</button>
+    {% if filter %}
+    <a href="{{url_for('pkmList')}}">Reset Filters</a>
     {% endif %}
-
-    <button type="submit">Filter</button>
   </form>
 </section>
 <section class="displayPkms">
   <div class="displayCarrusel">
-    {% for pkm in data %} {{ components.pkmCardL(pkm, abv) }} {% endfor %}
+    {% if data %} {% for pkm in data %} {{ components.pkmCardL(pkm, abv) }} {%
+    endfor %} {% else %}
+    <span>No data available</span>
+    {% endif %}
   </div>
 </section>
 

@@ -3,31 +3,29 @@
 {% block subTitle %} - Inicio{% endblock %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 {% endblock %}
 
 {% block content %}
-  <img src="../static/img/pokeball.png" alt="pokeball">
-  <a href="/"><h1 >PKM-BATTLE</h1></a>
-  <nav class="menu">
-    <a class="btt-link" href="">Jugar</a>
-    <a class="btt-link {% if disabled %}disabled{% endif %}" href="/pkm-list">PKM disponibles</a>
-  </nav>
-  {% if session.get("name") %}
-    <a href="{{ url_for('logout') }}">Log Out</a>
-  {% else %}
-      <form method="POST" action="{{ url_for('saveName') }}">
-          <label for="name">Your Name:</label>
-          <input
-              type="text"
-              id="name"
-              name="name"
-              minlength="3"
-              maxlength="15"
-              required
-          >
-          <button type="submit">Save</button>
-      </form>
+<img src="../static/img/pokeball.png" alt="pokeball">
+  <a href="/">
+    <h1>PKM-BATTLE</h1>
+  </a>
+<nav class="menu">
+  <a class="btt-link" href="">Jugar</a>
+  <a class="btt-link {% if disabled %}disabled{% endif %}" href="/pkm-list">PKM disponibles</a>
+</nav>
+{% if session.get("name") %}
+<a href="{{ url_for('logout') }}">Log Out</a>
+{% else %}
+<form method="POST" action="{{ url_for('index') }}">
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" name="trainer" minlength="3" maxlength="15" required>
+  <button type="submit">Save</button>
+  {% if error %}
+    <p class="error">{{ error }}</p>  
   {% endif %}
-  </div>
+</form>
+{% endif %}
+</div>
 {% endblock %}

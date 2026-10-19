@@ -26,6 +26,19 @@
   src: url("../font/EmojiFont.ttf") format("truetype");
   font-weight: 700;
 }
+.selectorMon form {
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 2px solid #F1EBDD;
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  gap: 10px;
+}
+.selectorMon form button {
+  justify-self: start;
+  padding: 5px 10px;
+}
+
 .displayPkms {
   display: flex;
   flex-direction: column;

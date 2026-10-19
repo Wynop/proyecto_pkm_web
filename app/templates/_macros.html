@@ -3,7 +3,7 @@
   <div class="head">
     <div>
       <div class="bg-img-{{ pkm.types[0] }}"></div>
-      <h2>{{ pkm.name }}</h2>
+      <h2>{{ pkm.name | capitalize }}</h2>
     </div>
     <h3 class=" bg-{{ pkm.types[0] }}">#{{ pkm.id }}</h3>
   </div>

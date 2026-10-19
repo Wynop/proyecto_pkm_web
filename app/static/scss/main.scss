@@ -58,11 +58,10 @@ body {
 
 //fondos
 .bg-normal {
-  background-color: v.$c-N2;
+  background-color: v.$c-N1;
 }
 .bg-fire {
   background-color: v.$c-S1;
-  
 }
 .bg-water {
   background-color: v.$c-S4;
@@ -302,7 +301,7 @@ figcaption {
   overflow: hidden;
 
   border: v.$s-m solid v.$c-N2;
-
+  
   //position: absolute;
   h2 {
     font-weight: v.$f-bold;

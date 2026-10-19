@@ -8,7 +8,7 @@ subTitle %} - {{ pkm.name }}{% endblock %} {% block styles %}
 <section class="pkmData">
   <article class="info">
     <h1>
-      <a href="javascript:history.back()">◄ </a>{{ pkm.name }}
+      <a href="javascript:history.back()">◄ </a>{{ pkm.name | capitalize }}
     </h1>
     <figure>
       <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
@@ -41,7 +41,7 @@ subTitle %} - {{ pkm.name }}{% endblock %} {% block styles %}
     {% for atq in pkm.moves %}
     <a class="bg-{{atq.type}}" href="{{atq.url}}" target="_blank">
       <div class="bg-img-{{atq.type}}"></div>
-      <h3>{{atq.name}} <span>{{atq.type}}</span></h3>
+      <h3>{{atq.name | capitalize }} <span>{{atq.type}}</span></h3>
       <span> Power: {{atq.power}} Acc: {{atq.accuracy}}</span>
     </a>
     {% endfor %}
