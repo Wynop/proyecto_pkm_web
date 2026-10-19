@@ -114,7 +114,7 @@
   align-items: center;
   gap: 10px;
 }
-.pkmData .moves > div {
+.pkmData .moves > a {
   background-color: #F1EBDD;
   width: 100%;
   border: #060509 solid 2px;
@@ -126,7 +126,7 @@
   -moz-column-gap: 10px;
        column-gap: 10px;
 }
-.pkmData .moves > div > :first-child {
+.pkmData .moves > a > :first-child {
   height: 100%;
   grid-column: 1;
   grid-row: 1/3;

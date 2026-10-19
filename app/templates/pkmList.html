@@ -1,17 +1,57 @@
-{% extends "_base.html" %} {% import "_macros.html" as components %} {% block
-subTitle %} - pkmList{% endblock %} {% block styles %}
+{% extends "_base.html" %} {% import "_macros.html" as components %}
+{% block subTitle %} - pkmList{% endblock %} {% block styles %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/pkmList.css') }}"
 />
 {% endblock %} {% block content %}
 <a href="/"><h1>PKM-BATTLE</h1></a>
-<h2 style="text-align: center;">
-  Hello {{ session["name"] }} <br>
+<h2 style="text-align: center">
+  Hello {{ session["name"] }} <br />
   VIEW THE MONS <a href=""><span>more</span></a>
 </h2>
+<section class="selectorMon">
+  <form method="POST" action="{{ url_for('battle') }}">
+    <label for="pokemon">Choose your Pokémon:</label>
+    <input
+      type="text"
+      id="pokemon"
+      name="pokemon"
+      list="pokemon-list"
+      placeholder="Enter a Pokémon name..."
+      required
+    />
+
+    <datalist id="pokemon-list">
+      {% for pkm in data %}
+      <option value="{{ pkm.name }}">{% endfor %}</option>
+    </datalist>
+
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <button type="submit">Battle</button>
+  </form><form method="POST" action="{{ url_for('filter') }}">
+    <label for="pokemon">Choose your Pokémon:</label>
+    <input
+      type="text"
+      id="pokemon"
+      name="pokemon"
+      list="pokemon-list"
+      placeholder="Enter a Pokémon name..."
+      required
+    />
+
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <button type="submit">Filter</button>
+  </form>
+</section>
 <section class="displayPkms">
-  <div class="displayCarrusel" >
+  <div class="displayCarrusel">
     {% for pkm in data %} {{ components.pkmCardL(pkm, abv) }} {% endfor %}
   </div>
 </section>

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-import json
+import json, random
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.secret_key = 'algo'
 
 with open("data/pokemons-eeveelutions.json", "r", encoding="utf-8") as archivo:
@@ -19,6 +19,8 @@ abv = {
 
 @app.route("/")
 def index():
+    if "name" not in session:
+        return render_template("index.html", disabled=True)
     return render_template("index.html")
 
 @app.route("/saveName", methods=["POST"])
@@ -31,13 +33,45 @@ def saveName():
     session["name"] = name
 
     return redirect(url_for("pkmList"))
-@app.route("/savePkm", methods=["POST"])
-def savePkm():
-    pkm = request.form["pkm"]
 
-    session["pkm"] = pkm
+@app.route("/battle", methods=["POST"])
+def battle():
+    pkm = request.form["pokemon"].strip().lower()
+    
+    if not pkm:
+        return render_template(
+            "pkmList.html",
+            data=data,
+            abv=abv,
+            error = "You must enter a Pokémon name."
+        )
+        
+    pokemon = None
+    
+    for item in data:
+        if item["name"].lower() == pkm:
+            pokemon = item
+            break
 
-    return redirect(url_for("battle"))
+    if pokemon is None:
+        return render_template(
+            "pkmList.html",
+            data=data,
+            abv=abv,
+            error="That Pokémon does not exist."
+        )
+    
+    pkmRand = None
+        
+    while True:
+        pkmRand = random.choice(data)
+    
+        if pkmRand["name"] != pokemon["name"]:
+            break
+            
+    pkmAtqMoves = random.sample(pokemon['moves'], 4)
+
+    return render_template("battle.html", pkmAtq=pokemon, pkmDef=pkmRand, pkmAtqMoves=pkmAtqMoves)
 
 @app.route("/logout")
 def logout():
@@ -50,9 +84,12 @@ def pkmList():
         return redirect(url_for("index"))
     return render_template("pkmList.html", data=data, abv=abv)
 
+@app.route("/filter")
+def filter():
+    return redirect(url_for("pkmList"))
 
 @app.route("/pkm/<int:id>")
-def pkmData(id, abv=abv):
+def pkmData(id):
 
     pokemon = {}
 
@@ -62,7 +99,6 @@ def pkmData(id, abv=abv):
             break
 
     return render_template("pkmData.html", pkm=pokemon)
-
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)

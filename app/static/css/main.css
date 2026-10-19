@@ -75,8 +75,16 @@ body {
     border-radius: 20px;
   }
 }
+.bg-normal {
+  background-color: #7b8699;
+}
+
 .bg-fire {
   background-color: #fbaf85;
+}
+
+.bg-water {
+  background-color: #74c5f3;
 }
 
 .bg-electric {
@@ -87,24 +95,56 @@ body {
   background-color: #a0eaa5;
 }
 
-.bg-water {
-  background-color: #74c5f3;
-}
-
 .bg-ice {
   background-color: #5fc4cb;
+}
+
+.bg-fighting {
+  background-color: #e9a1a1;
+}
+
+.bg-poison {
+  background-color: #c49ae0;
+}
+
+.bg-ground {
+  background-color: #e6c49a;
+}
+
+.bg-flying {
+  background-color: #b8c9f5;
+}
+
+.bg-psychic {
+  background-color: #e4acea;
+}
+
+.bg-bug {
+  background-color: #c9df91;
+}
+
+.bg-rock {
+  background-color: #d4c7a0;
+}
+
+.bg-ghost {
+  background-color: #aaa5d8;
+}
+
+.bg-dragon {
+  background-color: #a6b3ed;
 }
 
 .bg-dark {
   background-color: #a59de6;
 }
 
-.bg-fairy {
-  background-color: #f2c1cc;
+.bg-steel {
+  background-color: #c6d1d9;
 }
 
-.bg-psychic {
-  background-color: #e4acea;
+.bg-fairy {
+  background-color: #f2c1cc;
 }
 
 .bg-t-cloud {
@@ -300,9 +340,14 @@ h3 {
   font-size: 20px;
 }
 
+h3 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
 span {
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 figcaption {
@@ -311,6 +356,11 @@ figcaption {
 
 .f-w {
   color: #F1EBDD;
+}
+
+.disabled {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .btt-link {
@@ -420,7 +470,7 @@ figcaption {
   height: 100%;
   border-radius: 12px;
   min-width: 2;
-  border: black solid 2px;
+  border: #060509 solid 2px;
   padding: 0 5px;
   display: flex;
   align-items: center;

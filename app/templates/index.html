@@ -11,7 +11,7 @@
   <a href="/"><h1 >PKM-BATTLE</h1></a>
   <nav class="menu">
     <a class="btt-link" href="">Jugar</a>
-    <a class="btt-link" href="/pkm-list">PKM disponibles</a>
+    <a class="btt-link {% if disabled %}disabled{% endif %}" href="/pkm-list">PKM disponibles</a>
   </nav>
   {% if session.get("name") %}
     <a href="{{ url_for('logout') }}">Log Out</a>

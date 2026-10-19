@@ -1,0 +1,44 @@
+{% extends "_base.html" %}
+
+{% block subTitle %} - Inicio{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+{% endblock %}
+
+{% block content %}
+  <section class="screen">
+    <h2 class="goBack"><a href="/">< </a></h2>
+    <div class="defPkm">
+        <span>{{ pkmDef.name }}</span>
+        <div class="hpBar defHp">
+            <div style="width: {{ pkmDef.stats.hp }}%;"></div>
+            <span>{{ pkmDef.stats[0].value }} / {{ pkmDef.stats[0].value }} HP</span>
+        </div>
+    </div>
+    <img class="defSprite" src="{{pkmDef.sprites.front_default}}" alt="{{ pkmDef.name }}">
+    <div class="atqPkm">
+        <span>{{ pkmAtq.name }}</span>
+        <div class="hpBar atqHp">
+            <div style="width: {{ pkmAtq.stats.hp }}%;"></div>
+            <span>{{ pkmAtq.stats[0].value }} / {{ pkmAtq.stats[0].value }} HP</span>
+        </div>
+    </div>
+    <img class="atqSprite" src="{{pkmAtq.sprites.back_default}}" alt="{{ pkmAtq.name }}">
+  </section>
+  <section class="msg">
+    <p>Welcome {{ session["name"] }}</p>
+    <p>Ready for Battle?</p>
+  </section>
+  <section class="menu">
+    {% for move in pkmAtqMoves %}
+    <article class="bg-{{move.type}}">
+        <div class="bg-img-{{move.type}}" alt="atq type icon"></div>
+        <div class="atqInfo">
+            <h3>{{move.name}}</h3>
+            <h4>PW: {{move.power}}</h3>
+        </div>
+    </article>
+    {% endfor %}
+  </section>
+{% endblock %}

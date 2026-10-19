@@ -57,8 +57,15 @@ body {
 }
 
 //fondos
+.bg-normal {
+  background-color: v.$c-N2;
+}
 .bg-fire {
   background-color: v.$c-S1;
+  
+}
+.bg-water {
+  background-color: v.$c-S4;
 }
 .bg-electric {
   background-color: v.$c-S2;
@@ -66,21 +73,46 @@ body {
 .bg-grass {
   background-color: v.$c-S3;
 }
-.bg-water {
-  background-color: v.$c-S4;
-}
 .bg-ice {
   background-color: v.$c-S5;
 }
-.bg-dark {
-  background-color: v.$c-S6;
+.bg-fighting {
+  background-color: #e9a1a1;
 }
-.bg-fairy {
-  background-color: v.$c-S8;
+.bg-poison {
+  background-color: #c49ae0;
+}
+.bg-ground {
+  background-color: #e6c49a;
+}
+.bg-flying {
+  background-color: #b8c9f5;
 }
 .bg-psychic {
   background-color: v.$c-S7;
 }
+.bg-bug {
+  background-color: #c9df91;
+}
+.bg-rock {
+  background-color: #d4c7a0;
+}
+.bg-ghost {
+  background-color: #aaa5d8;
+}
+.bg-dragon {
+  background-color: #a6b3ed;
+}
+.bg-dark {
+  background-color: v.$c-S6;
+}
+.bg-steel {
+  background-color: #c6d1d9;
+}
+.bg-fairy {
+  background-color: v.$c-S8;
+}
+
 .bg-t-cloud {
   background-image:
     linear-gradient(45deg, transparent 10%, v.$c-N3 50%, transparent 70%),
@@ -218,9 +250,13 @@ h3 {
   font-weight: v.$f-bold;
   font-size: v.$fs-xl;
 }
+h3 {
+  font-weight: v.$f-regular;
+  font-size: v.$fs-lg;
+}
 span {
-  font-weight: v.$f-bold;
-  font-size: v.$fs-l;
+  font-weight: v.$f-regular;
+  font-size: v.$fs-lg;
 }
 figcaption {
   font-size: v.$fs-sm;
@@ -231,6 +267,11 @@ figcaption {
 }
 
 //Botones
+
+.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
 
 .btt-link {
   font-family: v.$f-head;
