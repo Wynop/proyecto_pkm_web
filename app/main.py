@@ -100,10 +100,10 @@ def pkmList():
                     break
 
             pkmAtqMoves = random.sample(pkmSel["moves"], 4)
+            
+            session["battle"] = [pkmSel, pkmRand, pkmAtqMoves]
 
-            return render_template(
-                "battle.html", pkmAtq=pkmSel, pkmDef=pkmRand, pkmAtqMoves=pkmAtqMoves
-            )
+            return redirect(url_for("battle"))
         elif action == "filter":
             filterName = request.form["pokemon"].strip().lower()
             filterType = request.form["type"]
@@ -116,7 +116,11 @@ def pkmList():
                     output.append(pkm)
 
             return render_template(
-                "pkmList.html", data=output, abv=abv, types=types, filter=[filterName,filterType]
+                "pkmList.html",
+                data=output,
+                abv=abv,
+                types=types,
+                filter=[filterName, filterType],
             )
 
     return render_template(
@@ -138,6 +142,14 @@ def pkmData(id):
             break
 
     return render_template("pkmData.html", pkm=pokemon)
+
+
+@app.route("/battle")
+def battle():
+    battle=session.get("battle")
+    return render_template(
+        "battle.html", pkmAtq=battle[0], pkmDef=battle[1], pkmAtqMoves=battle[2]
+    )
 
 
 if __name__ == "__main__":

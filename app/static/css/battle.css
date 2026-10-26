@@ -29,7 +29,7 @@
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr 6fr;
+  grid-template-rows: 40px 3fr 1fr 6fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   padding: 0px;
@@ -40,9 +40,10 @@
 }
 
 .goBack {
-  position: absolute;
-  left: 10px;
-  top: 5px;
+  height: 40px;
+  position: relative;
+  bottom: 5px;
+  left: 5px;
 }
 
 .screen {

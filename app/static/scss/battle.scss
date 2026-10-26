@@ -3,9 +3,10 @@
 #root {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 1fr 6fr;
+  grid-template-rows: v.$s-xl 3fr 1fr 6fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  
   padding: 0px;
   padding-top: v.$s-xl;
   background-color: v.$c-N3;
@@ -13,9 +14,11 @@
   border: 2px v.$c-P1 solid;
 }
 .goBack {
-  position: absolute;
-  left: v.$s-m;
-  top: v.$s-s;
+  height: v.$s-xl;
+  position: relative;
+  bottom: v.$s-s;
+  left: v.$s-s;
+
 }
 .screen {
   aspect-ratio: 16/9;
