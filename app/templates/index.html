@@ -8,12 +8,12 @@
 
 {% block content %}
 <img src="../static/img/pokeball.png" alt="pokeball">
-  <a href="/">
+  <a href="{{ url_for('index') }}">
     <h1>PKM-BATTLE</h1>
   </a>
 <nav class="menu">
-  <a class="btt-link" href="">Jugar</a>
-  <a class="btt-link {% if disabled %}disabled{% endif %}" href="/pkm-list">PKM disponibles</a>
+  <a class="btt-link" href="{{ url_for('pkmList') }}">Jugar</a>
+  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pkmList') }}"PKM disponibles</a>
 </nav>
 {% if session.get("name") %}
 <a href="{{ url_for('logout') }}">Log Out</a>

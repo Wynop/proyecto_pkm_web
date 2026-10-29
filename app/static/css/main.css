@@ -45,6 +45,12 @@
   display: none;
 }
 
+.logout {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
 body {
   width: 100vw;
   height: 100vh;

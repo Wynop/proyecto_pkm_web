@@ -24,7 +24,8 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
 
     <datalist id="pokemon-list">
       {% for pkm in data %}
-      <option value="{{ pkm.name }}">{% endfor %}</option>
+      <option value="{{ pkm.name }}"></option>
+      {% endfor %}
     </datalist>
 
     {% if errorBattle %}

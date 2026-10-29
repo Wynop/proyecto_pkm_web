@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link rel="icon" type="image/png" href="../static/img/pokeball.png">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/pokeball.png') }}">
 
     <title>PKM-BATTLE{% block subTitle %}{% endblock %}</title>
     {% block styles %}{% endblock %}
@@ -12,6 +12,9 @@
   <body>
     <div id="root">
         {% block content %}{% endblock %}
+        {% if session.get("name") %}
+          <a class="logout" href="{{ url_for('logout') }}">Log Out</a>
+        {% endif %}
     </div>
   </body>
 </html>

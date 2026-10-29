@@ -1,8 +1,18 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+from flask_session import Session
+from functools import wraps
 import json, random
 
 app = Flask(__name__, template_folder="templates")
-app.secret_key = "algo"
+
+app.config["SESSION_TYPE"] = "filesystem"   
+app.config["SESSION_PERMANENT"] = False     
+app.config["SESSION_FILE_DIR"] = "./.flask_session"  
+app.secret_key = "clave_super_secreta"
+
+Session(app)
+
+
 
 with open("data/pokemons-eeveelutions.json", "r", encoding="utf-8") as archivo:
     data = json.load(archivo)
@@ -37,6 +47,16 @@ types = [
 ]
 
 
+def login_requerido(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if "name" not in session:
+            return redirect(url_for("index"))
+        return func(*args, **kwargs)
+
+    return wrapper
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -61,9 +81,8 @@ def logout():
 
 
 @app.route("/pkm-list", methods=["GET", "POST"])
+@login_requerido
 def pkmList():
-    if "name" not in session:
-        return redirect(url_for("index"))
     if request.method == "POST":
         action = request.form.get("action")
         if action == "battle":
@@ -100,7 +119,7 @@ def pkmList():
                     break
 
             pkmAtqMoves = random.sample(pkmSel["moves"], 4)
-            
+
             session["battle"] = [pkmSel, pkmRand, pkmAtqMoves]
 
             return redirect(url_for("battle"))
@@ -132,6 +151,7 @@ def pkmList():
 
 
 @app.route("/pkm/<int:id>")
+@login_requerido
 def pkmData(id):
 
     pokemon = {}
@@ -145,8 +165,9 @@ def pkmData(id):
 
 
 @app.route("/battle")
+@login_requerido
 def battle():
-    battle=session.get("battle")
+    battle = session.get("battle")
     return render_template(
         "battle.html", pkmAtq=battle[0], pkmDef=battle[1], pkmAtqMoves=battle[2]
     )
