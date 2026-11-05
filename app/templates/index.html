@@ -13,7 +13,7 @@
   </a>
 <nav class="menu">
   <a class="btt-link" href="{{ url_for('pkmList') }}">Jugar</a>
-  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pkmList') }}"PKM disponibles</a>
+  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pkmList') }}"> PKM disponibles</a>
 </nav>
 {% if session.get("name") %}
 <a href="{{ url_for('logout') }}">Log Out</a>
