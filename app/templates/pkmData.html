@@ -1,51 +1,67 @@
 {% extends "_base.html" %} {% import "_macros.html" as components %} {% block
-subTitle %} - {{ pkm.name }}{% endblock %} {% block styles %}
+subTitle %} - {{ pkm.name }}{% endblock %}
+
+{% block styles %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/pkmData.css') }}"
 />
-{% endblock %} {% block content %}
-<section class="pkmData">
-  <article class="info">
-    <h1>
-      <a href="javascript:history.back()">◄ </a>{{ pkm.name | capitalize }}
-    </h1>
-    <figure>
-      <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
-      <img src="{{ pkm.sprites.back_default }}" alt="{{ pkm.name }}" />
-      <img src="{{ pkm.sprites.front_shiny }}" alt="{{ pkm.name }}" />
-      <img src="{{ pkm.sprites.back_shiny }}" alt="{{ pkm.name }}" />
-      <figcaption>
-        <span>height: {{ pkm.height }}</span>
-        <span>weight: {{ pkm.weight }}</span>
-      </figcaption>
-    </figure>
-    <h2>{{ pkm.types[0] }} {{ pkm.types[1] }}</h2>
-  </article>
-  <article class="stats">
-    <h2>Stats</h2>
-    {% for stat in pkm.stats %} {% set widthBar = (stat.value / 200 * 100) %} {%
-    if widthBar < 30 %} {% set bgColor = "bg-fire" %} {% elif widthBar < 50 %}
-    {% set bgColor = "bg-electric" %} {% else %} {% set bgColor = "bg-grass" %}
-    {% endif %}
-    <h3>{{ stat.name }}</h3>
-    <div class="statValue">
-      <div class="statBar {{ bgColor}}" style="width: {{ widthBar }}%;">
-        {{stat.value}}
+{% endblock %}
+
+{% block content %}
+
+{% if pkm %}
+
+  <section class="pkmData">
+    <article class="info">
+      <h1>
+        <a href="javascript:history.back()">◄ </a>{{ pkm.name | capitalize }}
+      </h1>
+      <figure>
+        <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
+        <img src="{{ pkm.sprites.back_default }}" alt="{{ pkm.name }}" />
+        <img src="{{ pkm.sprites.front_shiny }}" alt="{{ pkm.name }}" />
+        <img src="{{ pkm.sprites.back_shiny }}" alt="{{ pkm.name }}" />
+        <figcaption>
+          <span>height: {{ pkm.height }}</span>
+          <span>weight: {{ pkm.weight }}</span>
+        </figcaption>
+      </figure>
+      <h2>{{ pkm.types[0] }} {{ pkm.types[1] }}</h2>
+    </article>
+    <article class="stats">
+      <h2>Stats</h2>
+      {% for stat in pkm.stats %} {% set widthBar = (stat.value / 200 * 100) %} {%
+      if widthBar < 30 %} {% set bgColor = "bg-fire" %} {% elif widthBar < 50 %}
+      {% set bgColor = "bg-electric" %} {% else %} {% set bgColor = "bg-grass" %}
+      {% endif %}
+      <h3>{{ stat.name }}</h3>
+      <div class="statValue">
+        <div class="statBar {{ bgColor}}" style="width: {{ widthBar }}%;">
+          {{stat.value}}
+        </div>
       </div>
-    </div>
-    {% endfor %}
-  </article>
-  <article class="moves">
-      <h2>Moves</h2>
-    {% for atq in pkm.moves %}
-    <a class="bg-{{atq.type}}" href="{{atq.url}}" target="_blank">
-      <div class="bg-img-{{atq.type}}"></div>
-      <h3>{{atq.name | capitalize }} <span>{{atq.type}}</span></h3>
-      <span> Power: {{atq.power}} Acc: {{atq.accuracy}}</span>
-    </a>
-    {% endfor %}
-  </article>
-</section>
+      {% endfor %}
+    </article>
+    <article class="moves">
+        <h2>Moves</h2>
+      {% for atq in pkm.moves %}
+      <a class="bg-{{atq.type}}" href="{{atq.url}}" target="_blank">
+        <div class="bg-img-{{atq.type}}"></div>
+        <h3>{{atq.name | capitalize }} <span>{{atq.type}}</span></h3>
+        <span> Power: {{atq.power}} Acc: {{atq.accuracy}}</span>
+      </a>
+      {% endfor %}
+    </article>
+  </section>
+
+{% else %}
+
+  <section class="error">
+      <h1>Pokémon no encontrado</h1>
+      <a href="{{ url_for('pkmList') }}">Volver a pkm disponibles</a>
+  </section>
+
+{% endif %}
 
 {% endblock %}

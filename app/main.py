@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from flask_session import Session
 from functools import wraps
 import json, random
+from pathlib import Path
+from models.pokemonModel import Pokemon, cargarPkm
 
 app = Flask(__name__, template_folder="templates")
 
@@ -13,8 +15,9 @@ app.secret_key = "clave_super_secreta"
 Session(app)
 
 
+ruta = Path(__file__).parent.parent / "data" / "pokemons-eeveelutions.json"
 
-with open("data/pokemons-eeveelutions.json", "r", encoding="utf-8") as archivo:
+with open(ruta, "r", encoding="utf-8") as archivo:
     data = json.load(archivo)
 
 abv = {
@@ -46,6 +49,10 @@ types = [
     "fairy",
 ]
 
+
+pokemonCarga = cargarPkm(ruta)
+
+print(pokemonCarga[1])
 
 def login_requerido(func):
     @wraps(func)
@@ -83,6 +90,9 @@ def logout():
 @app.route("/pkm-list", methods=["GET", "POST"])
 @login_requerido
 def pkmList():
+    name = request.args.get("name", "").strip().lower()
+    pkmType = request.args.get("type", "")
+
     if request.method == "POST":
         action = request.form.get("action")
         if action == "battle":
@@ -126,21 +136,33 @@ def pkmList():
         elif action == "filter":
             filterName = request.form["pokemon"].strip().lower()
             filterType = request.form["type"]
-            output = []
 
-            for pkm in data:
-                if filterName in pkm["name"].lower() and (
-                    not filterType or filterType in pkm["types"]
-                ):
-                    output.append(pkm)
+            params = {}
 
-            return render_template(
-                "pkmList.html",
-                data=output,
-                abv=abv,
-                types=types,
-                filter=[filterName, filterType],
-            )
+            if filterName:
+                params["name"] = filterName
+
+            if filterType:
+                params["type"] = filterType
+
+            return redirect(url_for("pkmList", **params))
+
+    if name or type:
+        output = []
+        for pkm in data:
+            if (
+                (not name or name in pkm["name"].lower())
+                and (not pkmType or pkmType in pkm["types"])
+            ):
+                output.append(pkm)
+
+        return render_template(
+            "pkmList.html",
+            data=output,
+            abv=abv,
+            types=types,
+            filter=[name, pkmType],
+        )
 
     return render_template(
         "pkmList.html",
@@ -154,7 +176,7 @@ def pkmList():
 @login_requerido
 def pkmData(id):
 
-    pokemon = {}
+    pokemon = None
 
     for pkm in data:
         if pkm["id"] == id:
