@@ -5,7 +5,7 @@ from flask import session
 from services.pokemonService import PokemonService
 
 
-class battleService:
+class BattleService:
     
     @staticmethod
     def battleRandom(pkm):
