@@ -14,6 +14,6 @@ class PokemonRepository:
         return self._pokemons
     
     @staticmethod
-    def _cargarPkm(ruta: str = rutaPkm) -> list[Pokemon]:
+    def _cargarPkm(ruta: str = rutaPkm):
         with open(ruta, encoding="utf-8") as f:
             return [Pokemon.from_dict(p) for p in json.load(f)]
