@@ -1,39 +1,81 @@
 # PKM-BATTLE
 
-Pequeña Pokédex web centrada en las diferentes evoluciones de **Eevee**, desarrollada como proyecto de aprendizaje con **Python, Flask, HTML, CSS y Jinja**.
+Pequeña Pokédex web centrada en las diferentes evoluciones de **Eevee**, desarrollada como proyecto de aprendizaje utilizando **Python, Flask, HTML, CSS y Jinja2**.
 
 ## Tecnologías
 
-* Python
-* Flask
-* Jinja2
-* HTML5
-* CSS
-* JSON
+- Python
+- Flask
+- Flask-WTF
+- WTForms
+- Jinja2
+- HTML5
+- CSS / SCSS
+- JavaScript
+- JSON
 
 ## Funcionalidades
 
-* Listado de las diferentes Eeveelutions.
-* Página individual para cada Pokémon.
-* Información sobre estadísticas y características.
-* Listado de movimientos.
-* Colores personalizados según el tipo de Pokémon.
+- Listado de las diferentes Eeveelutions.
+- Página individual para cada Pokémon.
+- Información sobre estadísticas y características.
+- Listado de movimientos.
+- Colores personalizados según el tipo de Pokémon.
+- Registro e identificación del entrenador mediante sesiones.
+- Filtrado de Pokémon por nombre y tipo.
+- Sistema de preparación de batallas entre Pokémon.
+- Selección aleatoria de movimientos para el combate.
+
+## Arquitectura y organización
+
+La aplicación está organizada siguiendo una arquitectura por capas, separando las responsabilidades de las diferentes partes del proyecto.
+
+- **Routes:** gestiona las rutas y las peticiones HTTP mediante Blueprints.
+- **Services:** contiene la lógica de negocio de la aplicación, como la gestión de Pokémon, entrenadores y batallas.
+- **Repositories:** se encarga del acceso y recuperación de los datos.
+- **Models:** define las estructuras y clases utilizadas para representar los datos, como los Pokémon y sus movimientos.
+- **Forms:** contiene las clases de formularios desarrolladas con Flask-WTF.
+- **Templates:** almacena las plantillas HTML renderizadas mediante Jinja2.
+- **Static:** contiene los recursos estáticos, como hojas de estilos, scripts e imágenes.
+- **Config:** centraliza constantes y configuraciones utilizadas en la aplicación.
+
+### Organización mediante Blueprints
+
+Las rutas se han dividido en tres Blueprints para separar las funcionalidades principales:
+
+- **auth:** gestiona el inicio y cierre de sesión de los entrenadores.
+- **pokemon:** contiene las rutas del listado, filtrado y consulta individual de los Pokémon.
+- **battle:** gestiona la vista correspondiente al sistema de combate.
+
+Esta separación permite organizar mejor las rutas, reducir el acoplamiento entre funcionalidades y facilitar el mantenimiento y la ampliación del proyecto.
+
+### Formularios Flask-WTF
+
+Se ha incorporado Flask-WTF para gestionar los formularios desde clases Python, centralizando la definición de campos y sus validaciones.
+
+Actualmente se utilizan los siguientes formularios:
+
+- **LoginForm:** gestiona el registro del entrenador, validando que el nombre introducido tenga una longitud adecuada.
+- **BattleForm:** permite seleccionar un Pokémon para iniciar una batalla y valida que se haya introducido un nombre.
+- **PokemonFilterForm:** permite filtrar el listado por nombre y tipo, admitiendo que los campos estén vacíos.
+
+Los formularios utilizan validadores de WTForms y protección CSRF mediante tokens generados por Flask-WTF.
 
 ## Flujo de interacción y vistas
 
 La aplicación organiza la navegación mediante diferentes rutas y plantillas HTML renderizadas en el servidor con Flask y Jinja2.
 
-1. **Listado de Pokémon (`pkmList.html`):** muestra las diferentes evoluciones de Eevee y permite al usuario acceder a la información individual de cada Pokémon.
+1. **Registro del entrenador (`index.html`):** la aplicación solicita un nombre al usuario mediante un formulario Flask-WTF. Una vez validado, se guarda en la sesión para mantenerlo disponible durante la navegación.
 
-2. **Detalle del Pokémon (`pkmData.html`):** presenta la información del Pokémon seleccionado, incluyendo sus estadísticas, características y movimientos disponibles. Desde esta vista se puede iniciar el flujo de preparación de una batalla.
+2. **Listado de Pokémon (`pkmList.html`):** muestra las diferentes evoluciones de Eevee y permite acceder a la información individual de cada Pokémon. También incorpora formularios para filtrar el listado por nombre y tipo, e iniciar una batalla.
 
-3. **Registro del entrenador:** la aplicación solicita un nombre al usuario y lo guarda en la sesión para mantenerlo disponible durante la navegación, evitando tener que introducirlo de nuevo en cada petición.
+3. **Detalle del Pokémon (`pkmData.html`):** presenta la información del Pokémon seleccionado, incluyendo sus estadísticas, características y movimientos disponibles.
 
-4. **Preparación de la batalla:** se establece el Pokémon atacante seleccionado (`pkmSel`), se genera un Pokémon defensor aleatorio (`pkmRand`) y se seleccionan cuatro movimientos para el atacante (`pkmAtqMoves`).
+4. **Preparación de la batalla:** el usuario selecciona un Pokémon atacante y el sistema genera un Pokémon defensor aleatorio. También se seleccionan cuatro movimientos aleatorios para el atacante.
 
-5. **Vista de batalla (`battle.html`):** muestra los datos de los Pokémon seleccionados y los movimientos preparados para el combate. La aplicación utiliza una redirección a la ruta `/battle` para centralizar la carga de esta vista y recuperar los datos necesarios.
+5. **Vista de batalla (`battle.html`):** muestra los datos de los Pokémon seleccionados y los movimientos preparados para el combate. La aplicación utiliza una redirección a la ruta `/battle` para recuperar los datos almacenados en la sesión y renderizar esta vista.
 
-6. **Plantilla base (`base.html`):** proporciona la estructura común de las páginas, permitiendo reutilizar elementos compartidos y mantener una presentación coherente en toda la aplicación.
+6. **Plantilla base (`_base.html`):** proporciona la estructura común de las páginas, permitiendo reutilizar elementos compartidos y mantener una presentación coherente en toda la aplicación.
 
 ## Uso de la sesión de Flask
 
@@ -41,30 +83,45 @@ La aplicación utiliza `session` para conservar información entre diferentes pe
 
 Se guarda la siguiente información:
 
-- **Nombre del entrenador:** permite conservar la identidad elegida por el usuario durante la navegación y mostrarla en las vistas que lo necesiten.
-- **Pokémon atacante (`pkmAtq`):** almacena la información del Pokémon seleccionado para combatir.
-- **Pokémon defensor (`pkmDef`):** conserva el Pokémon generado aleatoriamente para enfrentarse al atacante.
-- **Movimientos del atacante (`pkmAtqMoves`):** mantiene los cuatro movimientos seleccionados para utilizarlos en la vista de batalla.
+- **Nombre del entrenador (`name`):** permite conservar el nombre elegido por el usuario durante la navegación y mostrarlo en las vistas que lo necesiten.
+- **Datos de la batalla (`battle`):** conserva los Pokémon participantes y la información preparada para el combate.
 
 Estos datos permiten redirigir al usuario a `/battle` sin tener que pasar toda la información mediante parámetros en la URL ni perder los datos preparados durante la petición anterior.
 
-## Estructura
+Además, se utiliza un decorador de autenticación (`login_requerido`) para restringir el acceso a determinadas rutas cuando el entrenador no ha iniciado sesión.
+
+## Estructura del proyecto
 
 ```text
 proyecto_pkm_web/
 ├── app/
-│   ├── ...
+│   ├── forms/
+│   │   ├── authForm.py
+│   │   └── pokemonForm.py
+│   ├── models/
+│   ├── repositories/
+│   ├── services/
+│   ├── routes/
+│   │   ├── auth.py
+│   │   ├── pokemon.py
+│   │   └── battle.py
+│   ├── config/
 │   ├── templates/
-│   │   ├── base.html
+│   │   ├── _base.html
+│   │   ├── index.html
 │   │   ├── pkmList.html
-│   │   └── pkmData.html
-│   └── static/
-│       ├── css/
-│       ├── scss/
-│       └── ...
+│   │   ├── pkmData.html
+│   │   └── battle.html
+│   ├── static/
+│   │   ├── css/
+│   │   ├── scss/
+│   │   ├── js/
+│   │   └── ...
+│   └── main.py
 ├── data/
-│   └── ...
+│   └── pokemons-eeveelutions.json
 ├── .gitignore
+├── requirements.txt
 └── README.md
 ```
 
@@ -77,13 +134,13 @@ git clone <URL_DEL_REPOSITORIO>
 cd proyecto_pkm_web
 ```
 
-Crea y activa un entorno virtual:
+Crea un entorno virtual:
 
 ```bash
 python -m venv venv
 ```
 
-Activar:
+Activa el entorno virtual:
 
 ```bash
 venv\Scripts\activate
@@ -95,14 +152,16 @@ Instala las dependencias:
 pip install -r requirements.txt
 ```
 
-Ejecuta la aplicación:
+## Ejecución
+
+Ejecuta la aplicación desde la raíz del proyecto:
 
 ```bash
-py app/main.py
+python app/main.py
 ```
 
-Después, abre:
+Después, abre la siguiente dirección en el navegador:
 
 ```text
-http://127.0.0.1:5000
+http://127.0.0.1:8080
 ```

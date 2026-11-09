@@ -5,71 +5,80 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
   href="{{ url_for('static', filename='css/pkmList.css') }}"
 />
 {% endblock %} {% block content %}
-<a href="{{url_for('index')}}"><h1>PKM-BATTLE</h1></a>
+<a href="{{url_for('auth.index')}}"><h1>PKM-BATTLE</h1></a>
 <h2 style="text-align: center">
   Hello {{ session["name"] }} <br />
   VIEW THE MONS
 </h2>
+<button
+    type="button"
+    class="filterBtt"
+    onclick="toggleFilters()"
+>
+    <span>Filtros y batalla</span>
+</button>
 <section class="selectorMon">
-  <form method="POST" action="{{ url_for('pkmList') }}">
-    <label for="pokemon">Choose your Pokémon:</label>
-    <input
-      type="text"
-      id="pokemon"
-      name="pokemon"
-      list="pokemon-list"
-      placeholder="Enter a Pokémon name..."
-      required
-    />
+  <form method="POST" action="{{ url_for('pokemon.pkmList') }}">
+    {{ battleForm.hidden_tag() }}
+
+    {{ battleForm.pokemon.label }}
+
+    {{ battleForm.pokemon(
+        list="pokemon-list",
+        placeholder="Enter a Pokémon name..."
+    ) }}
 
     <datalist id="pokemon-list">
-      {% for pkm in data %}
-      <option value="{{ pkm.name }}"></option>
-      {% endfor %}
+        {% for pkm in data %}
+            <option value="{{ pkm.name }}"></option>
+        {% endfor %}
     </datalist>
 
+    {% for error in battleForm.pokemon.errors %}
+        <p class="error">{{ error }}</p>
+    {% endfor %}
+
     {% if errorBattle %}
-    <p class="error">{{ errorBattle }}</p>
+        <p class="error">{{ errorBattle }}</p>
     {% endif %}
 
-    <button type="submit" name="action" value="battle">Battle</button>
+    {{ battleForm.submit() }}
   </form>
-  <form method="POST" action="{{ url_for('pkmList') }}">
-    <label for="pokemon">Filter by name:</label>
-    <input
-      type="text"
-      id="pokemon"
-      name="pokemon"
-      list="pokemon-list"
-      value="{{ filter[0] if filter else '' }}"
-      placeholder="Enter a Pokémon name..."
-    />
-    <label for="type">Filter by type:</label>
-    <select name="type" id="type">
-      <option value="" {% if filter and filter[1]=="" %}selected{% endif %}>
-        All types
-      </option>
+  <form method="POST" action="{{ url_for('pokemon.pkmList') }}">
+    {{ filterForm.hidden_tag() }}
 
-      {% for type in types %}
-      <option value="{{ type }}" {% if filter and filter[1]== type %}selected{% endif %} >
-        {{ type | capitalize }}
-      </option>
-      {% endfor %}
-    </select>
+    {{ filterForm.pokemon.label }}
 
-    <button type="submit" name="action" value="filter">Filter</button>
+    {{ filterForm.pokemon(
+        list="pokemon-list",
+        placeholder="Enter a Pokémon name..."
+    ) }}
+
+    {{ filterForm.type.label }}
+    {{ filterForm.type() }}
+
+    {{ filterForm.submit() }}
+
     {% if filter %}
-    <a href="{{url_for('pkmList')}}">Reset Filters</a>
+        <a href="{{ url_for('pokemon.pkmList') }}">Reset Filters</a>
     {% endif %}
   </form>
 </section>
 <section class="displayPkms">
   <div class="displayCarrusel">
-    {% if data %} {% for pkm in data %} {{ components.pkmCardL(pkm, abv) }} {%
-    endfor %} {% else %}
-    <span>No data available</span>
+    {% if data %}
+      {% for pkm in data %}
+        {{ components.pkmCardL(pkm) }}
+      {% endfor %}
+    {% else %}
+      <span>No data available</span>
     {% endif %}
   </div>
 </section>
-
+<script>
+  function toggleFilters() {
+      const selector = document.querySelector(".selectorMon");
+      selector.classList.toggle("open");
+  }
+</script>
 {% endblock %}

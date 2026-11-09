@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from models.moveModel import Move
-import json
 
 @dataclass
 class Pokemon:
@@ -14,8 +13,8 @@ class Pokemon:
     moves: list[Move]
 
     @classmethod
-    def from_dict(cls, pkm: dict) -> "Pokemon":
-        return cls(
+    def from_dict(self, pkm: dict) -> "Pokemon":
+        return self(
             id=pkm["id"],
             name=pkm["name"],
             height=pkm["height"],
@@ -26,8 +25,6 @@ class Pokemon:
             moves=[Move(**m) for m in pkm["moves"]],
         )
 
-def cargarPkm(ruta: str) -> list[Pokemon]:
-    with open(ruta, encoding="utf-8") as f:
-        return [Pokemon.from_dict(p) for p in json.load(f)]
+
 
     

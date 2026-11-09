@@ -7,24 +7,24 @@
 {% endblock %}
 
 {% block content %}
-  <h2 class="goBack"><a class=" f-w" href="{{ url_for('index') }}">< exit </a></h2>
+  <h2 class="goBack"><a class=" f-w" href="{{ url_for('auth.index') }}">< exit </a></h2>
   <section class="screen">
     <div class="defPkm">
         <span>{{ pkmDef.name | capitalize }}</span>
         <div class="hpBar defHp">
             <div ></div>
-            <span>{{ pkmDef.stats[0].value }} / {{ pkmDef.stats[0].value }} HP</span>
+            <span>{{ pkmDef.stats.hp }} / {{ pkmDef.stats.hp }} HP</span>
         </div>
     </div>
-    <img class="defSprite" src="{{pkmDef.sprites.front_default}}" alt="{{ pkmDef.name }}">
+    <img class="defSprite" src="{{pkmDef.sprites[0]}}" alt="{{ pkmDef.name }}">
     <div class="atqPkm">
         <span>{{ pkmAtq.name | capitalize }}</span>
         <div class="hpBar atqHp">
             <div></div>
-            <span>{{ pkmAtq.stats[0].value }} / {{ pkmAtq.stats[0].value }} HP</span>
+            <span>{{ pkmAtq.stats.hp }} / {{ pkmAtq.stats.hp }} HP</span>
         </div>
     </div>
-    <img class="atqSprite" src="{{pkmAtq.sprites.back_default}}" alt="{{ pkmAtq.name }}">
+    <img class="atqSprite" src="{{pkmAtq.sprites[1]}}" alt="{{ pkmAtq.name }}">
   </section>
   <section class="msg">
     <p>Welcome {{ session["name"] }}</p>

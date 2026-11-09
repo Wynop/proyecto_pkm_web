@@ -1,4 +1,4 @@
-{% macro pkmCardL(pkm, abv) %}
+{% macro pkmCardL(pkm) %}
 <article class="displayCard bg-{{ pkm.types[0] }}">
   <div class="head">
     <div>
@@ -10,18 +10,18 @@
 
   <div class="info">
     <figure>
-      <img src="{{ pkm.sprites.front_default }}" alt="{{ pkm.name }}" />
-      <img src="{{ pkm.sprites.back_default }}" alt="{{ pkm.name }}" />
-      <img src="{{ pkm.sprites.front_shiny }}" alt="{{ pkm.name }}" />
-      <img src="{{ pkm.sprites.back_shiny }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites[0] }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites[1] }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites[2] }}" alt="{{ pkm.name }}" />
+      <img src="{{ pkm.sprites[3] }}" alt="{{ pkm.name }}" />
       <figcaption>
         <span>height: {{ pkm.height }}</span>
         <span>weight: {{ pkm.weight }}</span>
       </figcaption>
     </figure>
     <div class="stats">
-      {% for stat in pkm.stats %}
-        {% set widthBar = (stat.value / 200 * 100) %}
+      {% for stat_name, stat_value in pkm.stats.items() %}
+        {% set widthBar = (stat_value / 200 * 100) %}
         {% if widthBar < 30 %}
           {% set bgColor = "bg-fire" %}
         {% elif widthBar < 50 %}
@@ -30,15 +30,15 @@
           {% set bgColor = "bg-grass" %}
         {% endif %}
 
-        <h3>{{ abv.get(stat.name, stat.name) }}</h3>
+        <h3>{{ PokemonStat[stat_name.upper().replace('-', '_')].value }}</h3>
         <div class="statValue">
           <div class="statBar {{ bgColor}}" style="width: {{ widthBar }}%;">
-            {{stat.value}}
+            {{stat_value}}
           </div>
         </div>
       {% endfor %}
     </div>
-    <a href="{{ url_for('pkmData', id=pkm.id) }}">Details</a>
+    <a href="{{ url_for('pokemon.pkmData', id=pkm.id) }}">Details</a>
   </div>
 </article>
 {% endmacro %}

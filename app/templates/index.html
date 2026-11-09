@@ -7,24 +7,28 @@
 {% endblock %}
 
 {% block content %}
-<img src="../static/img/pokeball.png" alt="pokeball">
-  <a href="{{ url_for('index') }}">
+<img src="{{ url_for('static', filename='img/pokeball.png') }}" alt="pokeball">
+  <a href="{{ url_for('auth.index') }}">
     <h1>PKM-BATTLE</h1>
   </a>
 <nav class="menu">
-  <a class="btt-link" href="{{ url_for('pkmList') }}">Jugar</a>
-  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pkmList') }}"> PKM disponibles</a>
+  <a class="btt-link" href="{{ url_for('pokemon.pkmList') }}">Jugar</a>
+  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pokemon.pkmList') }}"> PKM disponibles</a>
 </nav>
 {% if session.get("name") %}
-<a href="{{ url_for('logout') }}">Log Out</a>
+<a href="{{ url_for('auth.logout') }}">Log Out</a>
 {% else %}
-<form method="POST" action="{{ url_for('index') }}">
-  <label for="name">Your Name:</label>
-  <input type="text" id="name" name="trainer" minlength="3" maxlength="15" required>
-  <button type="submit">Save</button>
-  {% if error %}
-    <p class="error">{{ error }}</p>  
-  {% endif %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.trainer.label }}
+    {{ form.trainer(placeholder="Nombre del entrenador") }}
+
+    {% for error in form.trainer.errors %}
+        <p class="error">{{ error }}</p>
+    {% endfor %}
+
+    {{ form.submit() }}
 </form>
 {% endif %}
 </div>

@@ -1,6 +1,10 @@
 @use "./variables" as v;
 
 .selectorMon {
+  max-height: 0;
+  overflow: none;
+  opacity: 0;
+  display: none;
   form {
     width: 100%;
     padding: v.$s-m 0;
@@ -9,12 +13,24 @@
     display: grid;
     grid-template-columns: 4fr 6fr;
     gap: v.$s-m;
-    button {
-    justify-self: start;
-    padding: v.$s-s v.$s-m;
-    }
+    
   }
 }
+button {
+      justify-self: start;
+      padding: v.$s-s v.$s-m;
+    }
+.selectorMon.open {
+  max-height: 6000px;
+  opacity: 1;
+  display: block;
+  overflow: visible;
+}
+
+.toggleSelector.active .arrow {
+  transform: rotate(180deg);
+}
+
 .displayPkms {
   display: flex;
   flex-direction: column;
@@ -32,4 +48,3 @@
     padding: 0 0 v.$s-m 0;
   }
 }
-

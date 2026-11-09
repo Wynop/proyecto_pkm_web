@@ -13,7 +13,7 @@
     <div id="root">
         {% block content %}{% endblock %}
         {% if session.get("name") %}
-          <a class="logout" href="{{ url_for('logout') }}">Log Out</a>
+          <a class="logout" href="{{ url_for('auth.logout') }}">Log Out</a>
         {% endif %}
     </div>
   </body>

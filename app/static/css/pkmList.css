@@ -26,6 +26,12 @@
   src: url("../font/EmojiFont.ttf") format("truetype");
   font-weight: 700;
 }
+.selectorMon {
+  max-height: 0;
+  overflow: none;
+  opacity: 0;
+  display: none;
+}
 .selectorMon form {
   width: 100%;
   padding: 10px 0;
@@ -34,9 +40,21 @@
   grid-template-columns: 4fr 6fr;
   gap: 10px;
 }
-.selectorMon form button {
+
+button {
   justify-self: start;
   padding: 5px 10px;
+}
+
+.selectorMon.open {
+  max-height: 6000px;
+  opacity: 1;
+  display: block;
+  overflow: visible;
+}
+
+.toggleSelector.active .arrow {
+  transform: rotate(180deg);
 }
 
 .displayPkms {
