@@ -96,16 +96,24 @@ Además, se utiliza un decorador de autenticación (`login_requerido`) para rest
 proyecto_pkm_web/
 ├── app/
 │   ├── forms/
-│   │   ├── authForm.py
-│   │   └── pokemonForm.py
+│   │   ├── auth_form.py
+│   │   └── pokemon_form.py
 │   ├── models/
+│   │   ├── move_model.py
+│   │   └── pokemon_model.py
 │   ├── repositories/
+│   │   └── pokemon_repository.py
 │   ├── services/
+│   │   ├── pokemon_service.py
+│   │   └── battle_service.py
 │   ├── routes/
-│   │   ├── auth.py
-│   │   ├── pokemon.py
-│   │   └── battle.py
+│   │   ├── auth_routes.py
+│   │   ├── pokemon_routes.py
+│   │   └── battle_routes.py
 │   ├── config/
+│   │   ├── config.py
+│   │   ├── constants.py
+│   │   └── deps.py
 │   ├── templates/
 │   │   ├── _base.html
 │   │   ├── index.html
