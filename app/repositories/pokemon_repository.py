@@ -1,4 +1,4 @@
-from models.pokemonModel import Pokemon
+from models.pokemon_model import Pokemon
 import json
 from pathlib import Path
 

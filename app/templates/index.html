@@ -8,15 +8,15 @@
 
 {% block content %}
 <img src="{{ url_for('static', filename='img/pokeball.png') }}" alt="pokeball">
-  <a href="{{ url_for('auth.index') }}">
+  <a href="{{ url_for('auth_routes.index') }}">
     <h1>PKM-BATTLE</h1>
   </a>
 <nav class="menu">
-  <a class="btt-link" href="{{ url_for('pokemon.pkmList') }}">Jugar</a>
-  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pokemon.pkmList') }}"> PKM disponibles</a>
+  <a class="btt-link" href="{{ url_for('pokemon_routes.pkm_list') }}">Jugar</a>
+  <a class="btt-link {% if disabled %}disabled{% endif %}" href="{{ url_for('pokemon_routes.pkm_list') }}"> PKM disponibles</a>
 </nav>
 {% if session.get("name") %}
-<a href="{{ url_for('auth.logout') }}">Log Out</a>
+<a href="{{ url_for('auth_routes.logout') }}">Log Out</a>
 {% else %}
 <form method="POST">
     {{ form.hidden_tag() }}

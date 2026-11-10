@@ -5,7 +5,7 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
   href="{{ url_for('static', filename='css/pkmList.css') }}"
 />
 {% endblock %} {% block content %}
-<a href="{{url_for('auth.index')}}"><h1>PKM-BATTLE</h1></a>
+<a href="{{url_for('auth_routes.index')}}"><h1>PKM-BATTLE</h1></a>
 <h2 style="text-align: center">
   Hello {{ session["name"] }} <br />
   VIEW THE MONS
@@ -18,12 +18,12 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
     <span>Filtros y batalla</span>
 </button>
 <section class="selectorMon">
-  <form method="POST" action="{{ url_for('pokemon.pkmList') }}">
-    {{ battleForm.hidden_tag() }}
+  <form method="POST" action="{{ url_for('pokemon_routes.pkm_list') }}">
+    {{ battle_form.hidden_tag() }}
 
-    {{ battleForm.pokemon.label }}
+    {{ battle_form.pokemon.label }}
 
-    {{ battleForm.pokemon(
+    {{ battle_form.pokemon(
         list="pokemon-list",
         placeholder="Enter a Pokémon name..."
     ) }}
@@ -34,7 +34,7 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
         {% endfor %}
     </datalist>
 
-    {% for error in battleForm.pokemon.errors %}
+    {% for error in battle_form.pokemon.errors %}
         <p class="error">{{ error }}</p>
     {% endfor %}
 
@@ -42,25 +42,25 @@ subTitle %} - pkmList{% endblock %} {% block styles %}
         <p class="error">{{ errorBattle }}</p>
     {% endif %}
 
-    {{ battleForm.submit() }}
+    {{ battle_form.submit() }}
   </form>
-  <form method="POST" action="{{ url_for('pokemon.pkmList') }}">
-    {{ filterForm.hidden_tag() }}
+  <form method="POST" action="{{ url_for('pokemon_routes.pkm_list') }}">
+    {{ filter_form.hidden_tag() }}
 
-    {{ filterForm.pokemon.label }}
+    {{ filter_form.pokemon.label }}
 
-    {{ filterForm.pokemon(
+    {{ filter_form.pokemon(
         list="pokemon-list",
         placeholder="Enter a Pokémon name..."
     ) }}
 
-    {{ filterForm.type.label }}
-    {{ filterForm.type() }}
+    {{ filter_form.type.label }}
+    {{ filter_form.type() }}
 
-    {{ filterForm.submit() }}
+    {{ filter_form.submit() }}
 
     {% if filter %}
-        <a href="{{ url_for('pokemon.pkmList') }}">Reset Filters</a>
+        <a href="{{ url_for('pokemon_routes.pkm_list') }}">Reset Filters</a>
     {% endif %}
   </form>
 </section>

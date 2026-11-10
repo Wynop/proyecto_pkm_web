@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_session import Session
-from routes.pokemon import pokemon
-from routes.auth import auth
-from routes.battle import battleBp
+from routes.pokemon_routes import pokemon_bp
+from routes.auth_routes import auth_bp
+from routes.battle_routes import battle_bp
 from config.config import Config
 from pathlib import Path
 
@@ -10,9 +10,9 @@ from config.constants import PokemonStat, PokemonType
 
 app = Flask(__name__, template_folder="templates")
 
-app.register_blueprint(auth)
-app.register_blueprint(pokemon)
-app.register_blueprint(battleBp)
+app.register_blueprint(auth_bp)
+app.register_blueprint(pokemon_bp)
+app.register_blueprint(battle_bp)
 
 app.config.from_object(Config)
 app.jinja_env.globals["PokemonStat"] = PokemonStat

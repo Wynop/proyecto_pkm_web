@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from models.moveModel import Move
+from models.move_model import Move
 
 @dataclass
 class Pokemon:
